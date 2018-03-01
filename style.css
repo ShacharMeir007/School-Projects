@@ -7,7 +7,8 @@ body{
     background-size: cover;
 }
 div{
-    /*display: flex;*/
+    display: grid;
+    grid-template-rows:auto 1fr ;
 }
 nav{
     position: fixed;
@@ -21,9 +22,10 @@ nav{
     grid-template-rows: 1fr;
 }
 nav.black{
+    opacity: .85;
     background: black;
-    height: 100px;
-    padding: 10px 100px;
+    height: 80px;
+    padding: 10px 80px;
 }
 nav p {
     font-family: Arial, sans-serif;
@@ -33,12 +35,14 @@ nav p {
     transition: .30s;
     padding: 0px 20px;
 
+
 }
 
 
 nav.black p{
     color: #ffffff;
 }
+
 nav ul{
     display: flex;
 }
@@ -65,11 +69,16 @@ nav ul li a:hover{
     display: block;
     font-family: Arial, sans-serif;
     color: #222;
-    background-color: #a4a4a4;
+    background-color: #989898;
     border-radius: 10px;
     font-size: 14px;
     padding: 21px 18px 21px 18px;
     text-decoration: none;
+}
+
+nav.black ul li a:hover{
+    color: white;
+    background-color: #10ff00;
 }
 nav ul li ul{
     display: none;
@@ -83,6 +92,9 @@ nav ul li:hover ul{
 
     display: block;
 }
+nav.black ul li ul {
+    background-color: black;
+}
 nav ul li ul li{
     width: 150px;
     border-radius: 35px;
@@ -91,14 +103,16 @@ nav ul li ul li a{
     text-align: center;
     border-radius: 35px;
 }
+
 nav ul li ul li a:hover{
-    background-color: #a4a4a4;
+    background-color: #8f8f8f;
+}
+nav.black ul li ul li a:hover{
+    background-color: #10ff00;
 }
 #par{
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 2;
+    padding-top: 80px;
     font-size: 30px ;
-    color: aqua;
+    color: #ff0911;
 }
 
