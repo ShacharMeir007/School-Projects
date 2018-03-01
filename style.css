@@ -6,25 +6,41 @@ body{
     background-image:url("img/imac-pro-5k-ad-5120x2880.jpg") ;
     background-size: cover;
 }
+div{
+    /*display: flex;*/
+}
 nav{
+    position: fixed;
     width: 100%;
     height: 60px;
+    transition: .3s;
+    box-sizing: border-box;
     background-color: #b0b0b0;
     display: grid;
     grid-template-columns: 150px auto auto auto;
     grid-template-rows: 1fr;
+}
+nav.black{
+    background: black;
+    height: 100px;
+    padding: 10px 100px;
 }
 nav p {
     font-family: Arial, sans-serif;
     color: #222;
     font-size: 24px;
     line-height: 56px;
-
+    transition: .30s;
     padding: 0px 20px;
 
 }
+
+
+nav.black p{
+    color: #ffffff;
+}
 nav ul{
-    float: left;
+    display: flex;
 }
 nav ul li {
     float: left;
@@ -34,11 +50,16 @@ nav ul li {
 }
 nav ul li a{
     display: block;
+    transition: .30s;
     font-family: Arial, sans-serif;
     color: #222;
     font-size: 14px;
     padding: 21px 18px 21px 18px;
     text-decoration: none;
+}
+nav.black ul li a{
+    color: #fff;
+
 }
 nav ul li a:hover{
     display: block;
@@ -54,7 +75,7 @@ nav ul li ul{
     display: none;
     position: absolute;
     background-color: #b0b0b0;
-    opacity: 0.9;
+    opacity: .95;
     padding: 10px;
     border-radius: 0px 0px 8px 8px;
 }
@@ -72,5 +93,12 @@ nav ul li ul li a{
 }
 nav ul li ul li a:hover{
     background-color: #a4a4a4;
+}
+#par{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    font-size: 30px ;
+    color: aqua;
 }
 
