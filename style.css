@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-image:url("img/imac-pro-5k-ad-5120x2880.jpg") ;
+    background-image:url("img/blue wallpaper.jpg") ;
     background-size: cover;
 }
 div{
@@ -13,23 +13,35 @@ div{
 nav{
     position: fixed;
     width: 100%;
-    height: 60px;
-    transition: .3s;
+    height: 70px;
+
     box-sizing: border-box;
-    background-color: #b0b0b0;
+    background-color: #4940c5;
+
     display: grid;
-    grid-template-columns: 150px auto auto auto;
+    grid-template-columns: 250px auto auto auto;
     grid-template-rows: 1fr;
+    transition: opacity 2s;
 }
 nav.black{
+
     opacity: .85;
-    background: black;
-    height: 80px;
-    padding: 10px 80px;
+    height: 70px;
+    /*padding: 10px 80px;*/
+transition: opacity 2s;
+}
+nav a img{
+   /* display: none;*/
+
+    padding: 0px 200px 50px 10px ;
+}
+nav.black a img{
+display: inline;
+    /*padding: 0px 200px 50px 70px*/
 }
 nav p {
     font-family: Arial, sans-serif;
-    color: #222;
+    color: #ffffff;
     font-size: 24px;
     line-height: 56px;
     transition: .30s;
@@ -40,7 +52,9 @@ nav p {
 
 
 nav.black p{
-    color: #ffffff;
+
+    font-size: 30px;
+    color: #10ff00;
 }
 
 nav ul{
@@ -54,47 +68,54 @@ nav ul li {
 }
 nav ul li a{
     display: block;
+
     transition: .30s;
     font-family: Arial, sans-serif;
-    color: #222;
+    color: #ffffff;
     font-size: 14px;
     padding: 21px 18px 21px 18px;
     text-decoration: none;
 }
 nav.black ul li a{
     color: #fff;
+    transition: 500000000s;
 
 }
 nav ul li a:hover{
     display: block;
     font-family: Arial, sans-serif;
-    color: #222;
-    background-color: #989898;
+    color: #ffffff;
+    background-color: #2c2c9f;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 16px;
     padding: 21px 18px 21px 18px;
     text-decoration: none;
+    transition: font-size 500ms;
 }
 
 nav.black ul li a:hover{
     color: white;
-    background-color: #10ff00;
+    background-color: #2c2c9f;
 }
 nav ul li ul{
+    visibility: hidden;
     display: none;
     position: absolute;
-    background-color: #b0b0b0;
+    background-color: #4940c5;
     opacity: .95;
-    padding: 10px;
+    padding: 15px;
     border-radius: 0px 0px 8px 8px;
+
+}
+nav ul li{
+    height: 45px;
 }
 nav ul li:hover ul{
-
     display: block;
+    visibility: visible;
+
 }
-nav.black ul li ul {
-    background-color: black;
-}
+
 nav ul li ul li{
     width: 150px;
     border-radius: 35px;
@@ -105,10 +126,11 @@ nav ul li ul li a{
 }
 
 nav ul li ul li a:hover{
-    background-color: #8f8f8f;
+    font-size: 14px;
+    background-color: #2c2c9f;
 }
 nav.black ul li ul li a:hover{
-    background-color: #10ff00;
+    background-color: #2c2c9f;
 }
 #par{
     padding-top: 80px;
