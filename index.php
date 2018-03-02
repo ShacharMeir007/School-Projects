@@ -7,13 +7,16 @@
 <body>
 <form method="Get">
 
-    <input type="text" name="person">
+    <input type="text" name="num1">
     <button> submit</button>
 </form>
 
 <?php
 $fine = $_GET['person'];
+$r = array("f","fd");
 echo $fine;
+echo $r['0'];
+if($fine == $r){}
 
 ?>
 
