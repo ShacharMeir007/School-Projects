@@ -5,6 +5,8 @@
     <title>Home Page</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="nav%20bar.css">
+    <!--<link rel="import" type="text/html" href="menu.html">-->
     <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(window).on('scroll', function() {
@@ -20,7 +22,7 @@
 <body>
 <div>
 
-    <nav>
+    <!--<nav>
         <a href="Home%20Page.html">
             <img src="img/exodus.png" height="80" width="250">
         </a>
@@ -28,8 +30,8 @@
             <li><strong><a href="Home%20Page.html">Home Page</a></strong></li>
             <li><strong><a href="Gallery.html">Gallery&#9662</a></strong>
                 <ul>
-                    <li class="kaka"><strong><a href="#">code examples</a></strong></li>
-                    <li class="kaka"><strong><a href="#">decoration</a></strong></li>
+                    <li><strong><a href="#">code examples</a></strong></li>
+                    <li><strong><a href="#">decoration</a></strong></li>
                 </ul></li>
             <li><strong><a href="#">about</a></strong></li>
         </ul>
@@ -43,8 +45,9 @@
             <button class="log" id="register_button">Register</button>
 
         </form>
-    </nav>
+    </nav>-->
 </div>
+<div id="content_box">
 <p id="par">Devices may be hosts (
     DFP: Downstream-facing port) or peripherals
     (UFP: Upstream-facing port). Some, such as mobile phones, can take
@@ -65,6 +68,6 @@
     USB-C devices may optionally provide or consume bus power currents of 1.5 A and 3.0 A (at 5 V) in addition to baseline bus power provision; power sources can either advertise increased USB current through the configuration channel, or they can implement the full USB Power Delivery specification using both BMC-coded configuration line and legacy BFSK-coded V
 
 </p>
-
+</div>
 </body>
 </html>

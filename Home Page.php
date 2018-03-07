@@ -1,7 +1,7 @@
 <?php
 
 
-include 'menu.html';
+include_once 'menu.html';
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include 'menu.html';
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="body%20grid.css">
     <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(window).on('scroll', function() {

@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image:url("img/webSiteBG.jpg ") ;
+    background-size: cover;
+
+}
+div{
+    display: grid;
+    grid-template-rows:auto 1fr ;
+}
+nav{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.31);
+
+    display: grid;
+    grid-template-columns: 250px 380px 150px 1fr;
+    grid-template-rows: 1fr 1fr;
+    transition: background-color 1s;
+}
+nav.black{
+
+    background-color: rgba(0, 0, 0, 0.71);
+    transition: background-color 1s;
+}
+nav a img{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 1;
+    margin-left: 10px;
+}
+
+
+nav ul{
+    padding: 0 0 0 -50px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row: 1;
+    display: block;
+    height: 70px;
+    width: 300px;
+    size: 30px 30px;
+}
+
+nav ul li {
+    float: left;
+
+    list-style: none;
+    position: relative;
+}
+nav ul li a{
+    display: block;
+
+    transition: .30s;
+    font-family: Arial, sans-serif;
+    color: #00ff00;
+    font-size: 14px;
+    padding: 21px 18px 21px 18px;
+    text-decoration: none;
+}
+nav.black ul li a{
+    color: #00ff00;
+
+}
+nav ul li a:hover{
+    display: block;
+    font-family: Arial, sans-serif;
+    color: #00ff00;
+    background-color: rgba(0, 0, 255, 0.2);
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 21px 18px 21px 18px;
+    text-decoration: none;
+    transition: font-size 500ms;
+}
+
+nav.black ul li a:hover{
+    background-color: rgba(0, 0, 255, 0.2);
+}
+nav ul li ul{
+    visibility: hidden;
+
+    position: absolute;
+    background-color: rgba(56, 14, 57, 0.7);
+    padding: 15px;
+    border-radius: 0px 0px 8px 8px;
+
+}
+nav ul li{
+    height: 45px;
+}
+nav ul li:hover ul{
+    display: block;
+    visibility: visible;
+
+}
+
+nav ul li ul li{
+    width: 150px;
+    border-radius: 35px;
+}
+nav ul li ul li a{
+    text-align: center;
+    border-radius: 35px;
+}
+
+nav ul li ul li a:hover{
+    font-size: 14px;
+    background-color: rgba(255, 78, 231, 0.2);
+}
+nav.black ul li ul li a:hover{
+    background-color: rgba(0, 0, 255, 0.21);
+}
+
+.log{
+
+    display: inline-block;
+    margin: 16px 0px 0px 0px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;;
+}
+/*the text "password"*/
+
+#password{
+    color: #00ff00;
+}
+/*the text "username"*/
+#username{
+    color: #00ff00;
+}
+#login_button{
+    margin: 0 0 0 10px;
+    border-radius: 10px;
+}
+#register_button{
+    margin: 0 0 0 10px;
+    border-radius: 10px;
+}
+
+nav form{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    margin: 0 0 0 -60px;
+}
