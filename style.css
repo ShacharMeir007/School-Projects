@@ -23,6 +23,14 @@ div{
 
 }
 
+#thegame{
+    border: 0px;
+    background-color: black;
+    width: 365px;
+    height: 400px;
+    margin: 0px 100px 50px 100px;
+}
+
 #content{
     grid-column-start: 2;
     grid-column-end: 3;
