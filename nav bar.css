@@ -59,7 +59,7 @@ nav ul li a:hover{
     color: #00ff00;
     background-color: rgba(0, 0, 255, 0.2);
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 14px;
     padding: 21px 18px 21px 18px;
     text-decoration: none;
     transition: font-size 500ms;
@@ -72,16 +72,19 @@ nav ul li ul{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 15px;
+    margin-top: 9px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
 }
 nav.black ul li ul{
     background-color: rgba(0,0,0,0.5);
+    transition: 1s;
 }
 nav ul li:hover ul{
     opacity: 1;
     display: block;
     visibility: visible;
+    transition: 0.1s;
 }
 nav ul li ul li{
     width: 150px;
@@ -116,14 +119,37 @@ nav ul li ul li a:hover{
 #username{
     color: #00ff00;
 }
+#pass{
+    background: rgba(250,250,255,0.8);
+}
+#login{
+    background: rgba(250,250,255,0.8);
+}
 #login_button{
     margin: 0 0 0 10px;
+    border: 0px;
     border-radius: 10px;
+    padding: 4px;
+    background: rgba(250,250,255,0.8);
+    transition: 0.5s;
 }
 #register_button{
     margin: 0 0 0 10px;
+    border: 0px;
     border-radius: 10px;
+    padding: 4px;
+    background: rgba(250,250,255,0.8);
+    transition: 0.5s;
 }
+#login_button:hover{
+    background: rgba(20,200,255,1);
+    transition: 0.5s;
+}
+#register_button:hover{
+    background: rgba(20,200,255,1);
+    transition: 0.5s;
+}
+
 
 nav form{
     grid-column-start: 4;

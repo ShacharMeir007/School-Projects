@@ -1,31 +1,54 @@
-<nav>
-    <a href="Home%20Page.html">
-        <img src="img/exodus.png" height="80" width="250">
-    </a>
-    <ul>
-        <li><strong><a href="Home%20Page.html">Home Page</a></strong></li>
-        <li><strong><a href="#">Gallery</a></strong>
-            <ul>
-                <li><strong><a href="code%20example.html">code examples</a></strong></li>
-                <li><strong><a href="Gallery.html">decoration</a></strong></li>
-            </ul>
-        </li>
-        <li><strong><a href="#">games</a></strong>
-            <ul>
-                <li><strong><a href="Snake%20Page.html">snake</a></strong></li>
-                <li><strong><a href="Hacked%20Snake%20Page.html">hacked snake</a></strong></li>
-            </ul>
-        </li>
-        <li><strong><a href="about.html">about</a></strong></li>
-    </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
 
-    <form>
-        <strong><p class="log" id="username">username:</p></strong>
-        <input type="text" id="login" class="log">
-        <strong><p  class="log" id="password">password:</p></strong>
-        <input type="text" id="pass" class="log">
-        <button class="log" id="login_button">login</button>
-        <button class="log" id="register_button">Register</button>
+    <link rel="stylesheet" type="text/css" href="nav%20bar.css">
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() ){
+                $('nav').addClass('black');
+            }
+            else {
+                $('nav').removeClass('black');
+            }
+        })
+    </script>
+</head>
+<body>
+<div>
+    <nav>
+        <a href="Home%20Page.html">
+            <img src="img/exodus.png" height="80" width="250">
+        </a>
+        <ul>
+            <li><strong><a href="Home%20Page.html">Home Page</a></strong></li>
+            <li><strong><a href="#">Gallery&#9662</a></strong>
+                <ul>
+                    <li><strong><a href="code%20example.html">code examples</a></strong></li>
+                    <li><strong><a href="Decoration.html">decoration</a></strong></li>
+                </ul>
+            </li>
+            <li><strong><a href="#">games&#9662</a></strong>
+                <ul>
+                    <li><strong><a href="Snake%20Page.html">snake</a></strong></li>
+                    <li><strong><a href="Hacked%20Snake%20Page.html">hacked snake</a></strong></li>
+                </ul>
+            </li>
+            <li><strong><a href="about.html">about</a></strong></li>
+        </ul>
 
-    </form>
-</nav>
+        <form>
+            <strong><p class="log" id="username">username:</p></strong>
+            <input type="text" class="log" id="login">
+            <strong><p  class="log" id="password">password:</p></strong>
+            <input type="text"  class="log" id="pass">
+            <button class="log" id="login_button">login</button>
+            <button class="log" id="register_button">Register</button>
+        </form>
+    </nav>
+</div>
+</body>
+</html>
