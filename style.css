@@ -30,6 +30,13 @@ div{
     height: 400px;
     margin: 0px 100px 50px 100px;
 }
+#theHgame{
+    border: 0px;
+    background-color: black;
+    width: 365px;
+    height: 450px;
+    margin: 0px 100px 50px 100px;
+}
 
 #content{
     grid-column-start: 2;

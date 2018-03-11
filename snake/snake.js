@@ -3,10 +3,10 @@ var snakeX = 2;
 var snakeY = 2;
 var height = 30;
 var width = 30;
-var interval = 70;
-var increment = 6;
-var foodpoints = 47;
-
+var interval = 100;
+var increment = 1;
+var foodpoints = 4;
+var start = false;
 
 //game variables
 var length = 2;
@@ -19,17 +19,21 @@ var gameOver = false;
 var direction = -1;//up = 0 , down = -1 , left = 1, right = 2
 var int;
 var tempdir = direction;
-var score = 365;
+var score = 0;
 
 /**
 * entry point of the game.
 */
 function run() {
     init();
-    int = setInterval(gameLoop, interval);
 }
 
 function init() {
+    if(document.getElementById("version").getAttribute("class") == "hacked"){
+        document.getElementById("speed").value = 100;
+        document.getElementById("wall").checked = true;
+        document.getElementById("collapse").checked = true;
+    }
     createMap();
     createSnake();
     createFood();
@@ -107,11 +111,18 @@ window.addEventListener("keypress", function key(event){
     //if key is D set direction right
     else if(direction != 1 && (key == 100 || key == 68))
         tempdir = 2;
-    if(!running)
+    if(!running) {
         running = true;
+        if (!start) {
+            settings();
+            int = setInterval(gameLoop, interval);
+            start = true;
+        }
+    }
     else if(key == 32)
         running = false;
 });
+
 
 function gameLoop() {
     if(running && !gameOver)
@@ -138,7 +149,7 @@ function update() {
     //draws the head of the snake on the tail
     set(snakeX, snakeY, "snake");
 
-    if(crashWall() || crashSnake()){
+    if((crashWall()&&wall) || (crashSnake()&&collapse)){
         gameOver = true;
     }
     if(snakeX == foodX && snakeY == foodY){
@@ -173,5 +184,22 @@ function updateTail() {
     tailX[0] = snakeX;
     tailY[0] = snakeY;
 }
+
+var collapse=true;
+var wall=true;
+
+function settings() {
+    if(document.getElementById("version").getAttribute("class") == "hacked"){
+        collapse = document.getElementById("collapse").checked;
+        wall = document.getElementById("wall").checked;
+        interval = document.getElementById("speed").value;
+    }else
+    {
+        collapse = true;
+        wall= true;
+        interval = 100;
+    }
+}
+
 
 run();
