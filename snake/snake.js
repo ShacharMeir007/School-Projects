@@ -149,9 +149,14 @@ function update() {
     //draws the head of the snake on the tail
     set(snakeX, snakeY, "snake");
 
-    if((crashWall()&&wall) || (crashSnake()&&collapse)){
+    if(crashSnake()&&collapse){
         gameOver = true;
     }
+    if(crashWall(0) && wall)
+        gameOver;
+    else
+        if(crashWall(1))
+            wallSwitch();
     if(snakeX == foodX && snakeY == foodY){
         length += increment;
         createFood();
@@ -160,12 +165,32 @@ function update() {
     document.getElementById("score").innerHTML = "score: " + score;
 }
 
-function crashWall() {
-    if(snakeX == 0 || snakeX == width-1 || snakeY == 0 || snakeY == height-1)
+function crashWall(n) {
+    if(snakeX == n || snakeX == width-1-n || snakeY == n || snakeY == height-1-n)
         return true;
     else
         return false;
 }
+
+function wallSwitch() {
+    if(snakeY == 1 && direction == 0)
+        snakeY = height - 1;
+    if(snakeY == (height - 2) && direction == -1)
+        snakeY = 1;
+    if(snakeX == 1 && direction == 1)
+        snakeX = width - 1;
+    if(snakeX == (width - 2) && direction == 2)
+        snakeX = 1;
+    resetWall();
+}
+
+function resetWall() {
+    for( var y = 0; y < height; y++)
+        for( var x = 0; x < width; x++)
+            if(x == 0 || x == width -1 || y == 0 || y == height -1)
+                set(x, y, "wall");
+}
+
 function crashSnake(){
     for(var i = tailX.length-1; i >=0; i--){
         if(snakeX == tailX[i] && snakeY == tailY[i]){

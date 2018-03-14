@@ -9,6 +9,10 @@ body{
     font-size: 20px;
 }
 
+p{
+    color: #00ff00;
+}
+
 td{
     width: 10px;
     height: 10px;
