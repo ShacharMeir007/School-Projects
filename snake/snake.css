@@ -23,6 +23,11 @@ td{
     font-size: 30px;
 }
 
+#best{
+    color: #00a0ff;
+    font-size: 20px;
+}
+
 #contents{
     color: #00ff00;
     font-size: 30px;
@@ -44,3 +49,8 @@ td{
     background-color: gold;
 }
 
+.gameTable{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}

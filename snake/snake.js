@@ -3,15 +3,20 @@ var snakeX = 2;
 var snakeY = 2;
 var height = 30;
 var width = 30;
-var interval = 100;
+var interval = 75;
 var increment = 1;
 var foodpoints = 4;
 var start = false;
+var lastGames = [1];
+lastGames[0] = 0;
+var personalBest = 0;
 
 //game variables
 var length = 2;
-var tailX = [snakeX];
-var tailY = [snakeY];
+var tailX = [1];
+var tailY = [1];
+tailX[0] = snakeX;
+tailY[0] = snakeY;
 var foodX;
 var foodY;
 var running = false;
@@ -24,26 +29,29 @@ var collapse=true;
 var wall=true;
 
 
-/**
-* entry point of the game.
-*/
 function run() {
     init();
 }
 
 function init() {
     if(document.getElementById("version").getAttribute("class") == "hacked"){
-        document.getElementById("speed").value = 100;
+        document.getElementById("speed").value = 75;
         document.getElementById("wall").checked = true;
         document.getElementById("collapse").checked = true;
     }
+    int = setInterval(gameLoop, interval);
     createMap();
     createSnake();
     createFood();
+    for(var i = 0; i < length; i++){
+        updateTail();
+        snakeX++;
+        set(snakeX, snakeY, "snake");
+    }
 }
 
 function createMap() {
-    document.write("<table>");
+    document.write("<table class='gameTable' id='gameBord'>");
 
     for( var y = 0; y < height; y++) {
         document.write("<tr>");
@@ -100,25 +108,23 @@ window.addEventListener("keypress", function key(event){
     if(key == 0)//make sure that key work
         key = event.which;
 
-    if(direction != -1 && (key == 119 || key == 87))
+    if(direction != -1 && (key == 119 || key == 87) && running)
         tempdir = 0;
     //if key is S set direction down
-    else if(direction != 0 && (key == 115 || key == 83))
+    else if(direction != 0 && (key == 115 || key == 83) && running)
         tempdir = -1;
     //if key is A set direction left
-    else if(direction != 2 && (key == 97 || key == 65))
+    else if(direction != 2 && (key == 97 || key == 65) && running)
         tempdir = 1;
     //if key is D set direction right
-    else if(direction != 1 && (key == 100 || key == 68))
+    else if(direction != 1 && (key == 100 || key == 68) && running)
         tempdir = 2;
-    if(!running) {
+    if(!running && start)
         running = true;
-        if (!start && (key == 100 || keey == 68)) {
-            settings();
-            int = setInterval(gameLoop, interval);
-            start = true;
-            tempdir = 2;
-        }
+    if(!start && (key == 100 || keey == 68)) {
+        running = true;
+        start = true;
+        tempdir = 2;
     }
     else if(key == 32)
         running = false;
@@ -133,6 +139,7 @@ function gameLoop() {
 }
 
 function update() {
+    settings();
     direction = tempdir;
     updateTail();
     set(tailX[length],tailY[length],"blank");
@@ -155,12 +162,12 @@ function update() {
     }
 
     if(crashSnake()&&collapse){
-        gameOver = true;
+        endGame();
     }
 
     if(wall) {
         if (crashWall())
-            gameOver = true;
+           endGame();
     }
     else
         wallSwitch();
@@ -169,11 +176,59 @@ function update() {
     if(snakeX == foodX && snakeY == foodY){
         grow(increment);
         createFood();
-        score += foodpoints;
+        score += foodpoints * (75 / interval);
+        updateScore(score);
     }
     set(snakeX, snakeY, "snake");
 
-    document.getElementById("score").innerHTML = "score: " + score;
+    document.getElementById("score").innerHTML = "score: " + (score - (score % 1));
+}
+
+function endGame() {
+    updateScore(score);
+
+
+    snakeX = 2;
+    snakeY = 2;
+    height = 30;
+    width = 30;
+    increment = 1;
+    foodpoints = 4;
+    start = false;
+
+//game variables
+    length = 2;
+    tailX = [snakeX];
+    tailY = [snakeY];
+    running = false;
+    gameOver = false;
+    direction = -1;//up = 0 , down = -1 , left = 1, right = 2
+    score = 0;
+
+
+    document.getElementById("score").innerHTML = "press SPACE to restart";
+    emptyMap();
+}
+
+function updateScore(s) {
+    s = s - (s % 1);
+    lastGames[lastGames.length] = s;
+    if (s > personalBest) {
+        personalBest = s;
+        document.getElementById("best").innerHTML = "Best score: " + personalBest;
+    }
+}
+
+function emptyMap() {
+    for( var y = 0; y < height; y++) {
+        for( var x = 0; x < width; x++){
+            if(x == 0 || x == width -1 || y == 0 || y == height -1) {
+                document.getElementById(x + "-" + y).setAttribute("class", "wall");
+            }else {
+                document.getElementById(x + "-" + y).setAttribute("class", "blank");
+            }
+        }
+    }
 }
 
 function grow(n) {
@@ -233,6 +288,8 @@ function settings() {
         collapse = document.getElementById("collapse").checked;
         wall = document.getElementById("wall").checked;
         interval = document.getElementById("speed").value;
+        clearInterval(int);
+        int = setInterval(gameLoop, interval);
     }else
     {
         collapse = true;
