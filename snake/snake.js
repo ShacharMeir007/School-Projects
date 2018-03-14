@@ -20,6 +20,9 @@ var direction = -1;//up = 0 , down = -1 , left = 1, right = 2
 var int;
 var tempdir = direction;
 var score = 0;
+var collapse=true;
+var wall=true;
+
 
 /**
 * entry point of the game.
@@ -39,9 +42,6 @@ function init() {
     createFood();
 }
 
-/**
- * Generate the map
-*/
 function createMap() {
     document.write("<table>");
 
@@ -113,10 +113,11 @@ window.addEventListener("keypress", function key(event){
         tempdir = 2;
     if(!running) {
         running = true;
-        if (!start) {
+        if (!start && (key == 100 || keey == 68)) {
             settings();
             int = setInterval(gameLoop, interval);
             start = true;
+            tempdir = 2;
         }
     }
     else if(key == 32)
@@ -133,55 +134,81 @@ function gameLoop() {
 
 function update() {
     direction = tempdir;
-    //prevents fruit from not showing up
-    set(foodX, foodY, "food");
     updateTail();
     set(tailX[length],tailY[length],"blank");
+    resetWall();
+    set(foodX, foodY, "food");
     //updates the position of the snake according to the direction
-    if(direction == 0)
-        snakeY--;
-    else if(direction == -1)
-        snakeY++;
-    else if(direction == 1)
-        snakeX--;
-    else if(direction == 2)
-        snakeX++;
-    //draws the head of the snake on the tail
-    set(snakeX, snakeY, "snake");
+    switch (direction){
+        case 0:
+            snakeY--;
+            break;
+        case -1:
+            snakeY++;
+            break;
+        case 1:
+            snakeX--;
+            break;
+        case 2:
+            snakeX++;
+            break;
+    }
 
     if(crashSnake()&&collapse){
         gameOver = true;
     }
-    if(crashWall(0) && wall)
-        gameOver;
+
+    if(wall) {
+        if (crashWall())
+            gameOver = true;
+    }
     else
-        if(crashWall(1))
-            wallSwitch();
+        wallSwitch();
+
+
     if(snakeX == foodX && snakeY == foodY){
-        length += increment;
+        grow(increment);
         createFood();
         score += foodpoints;
     }
+    set(snakeX, snakeY, "snake");
+
     document.getElementById("score").innerHTML = "score: " + score;
 }
 
-function crashWall(n) {
-    if(snakeX == n || snakeX == width-1-n || snakeY == n || snakeY == height-1-n)
+function grow(n) {
+    length += n;
+    /*for( var i = length - increment; i < length; i++){
+        snakeY[i] = snakeY[length - increment - 1];
+        snakeX[i] = snakeX[length - increment - 1];
+    }*/
+}
+
+function updateTail() {
+    for(var i = length; i > 0; i--){
+        tailY[i] = tailY[i-1];
+        tailX[i] = tailX[i-1];
+    }
+    tailX[0] = snakeX;
+    tailY[0] = snakeY;
+}
+
+function crashWall() {
+    if(snakeX == 0 || snakeX == width-1 || snakeY == 0 || snakeY == height-1)
         return true;
     else
         return false;
 }
 
 function wallSwitch() {
-    if(snakeY == 1 && direction == 0)
-        snakeY = height - 1;
-    if(snakeY == (height - 2) && direction == -1)
+    if(snakeY == 0 && direction == 0)
+        snakeY = height - 2;
+    if(snakeY == (height - 1) && direction == -1)
         snakeY = 1;
-    if(snakeX == 1 && direction == 1)
-        snakeX = width - 1;
-    if(snakeX == (width - 2) && direction == 2)
+    if(snakeX == 0 && direction == 1)
+        snakeX = width - 2;
+    if(snakeX == (width - 1) && direction == 2)
         snakeX = 1;
-    resetWall();
 }
 
 function resetWall() {
@@ -201,18 +228,6 @@ function crashSnake(){
     return false;
 }
 
-function updateTail() {
-    for(var i = length; i > 0; i--){
-        tailY[i] = tailY[i-1];
-        tailX[i] = tailX[i-1];
-    }
-    tailX[0] = snakeX;
-    tailY[0] = snakeY;
-}
-
-var collapse=true;
-var wall=true;
-
 function settings() {
     if(document.getElementById("version").getAttribute("class") == "hacked"){
         collapse = document.getElementById("collapse").checked;
@@ -225,6 +240,5 @@ function settings() {
         interval = 100;
     }
 }
-
 
 run();
