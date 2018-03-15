@@ -1,7 +1,7 @@
 //setting
 var snakeX = 2;
 var snakeY = 2;
-var height = 30;
+var height = 32;
 var width = 30;
 var interval = 100;
 var increment = 1;

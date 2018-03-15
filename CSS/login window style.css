@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#login_window{
+
+    height: 70px;
+    width: 720px;
+    background-color: rgba(0, 0, 0, 0.4);
+    float: right;
+
+}
+
+.system{
+        /*display: inline;*/
+
+}
+
+#user_profile{
+float: left;
+margin: 10px 0 0px 420px;
+height: 40px;
+width: 40px;
+}
+#username{
+    margin: 20px 0 0 10px;
+float: left;
+width: 50px;
+}
