@@ -23,7 +23,7 @@
         <a href="Home%20Page.html">
             <img src="../img/exodus.png" height="80" width="250">
         </a>
-        <ul>
+        <ul class="nav">
             <li><strong><a href="Home%20Page.html">Home Page</a></strong></li>
             <li><strong><a href="#">Gallery&#9662</a></strong>
                 <ul>
@@ -38,17 +38,24 @@
                 </ul>
             </li>
             <li><strong><a href="about.html">about</a></strong></li>
+            <input type="checkbox" id="loginCheck" width="10px" height="10px" style="margin-top: 35px">
         </ul>
-
-        <form>
-            <strong><p class="log" id="username">username:</p></strong>
-            <input type="text" class="log" id="login">
-            <strong><p  class="log" id="password">password:</p></strong>
-            <input type="password"  class="log" id="pass">
-            <button class="log" id="login_button">login</button>
-            <button class="log" id="register_button">Register</button>
-        </form>
+        <div id="formediv"></div>
     </nav>
 </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+    $(function () {
+        setInterval(int, 100);
+    })
+
+    function int() {
+        if(document.getElementById("loginCheck").checked)
+            $("#formediv").load("logedWindow.html");
+        else
+            $("#formediv").load("unLogedWindow.html");
+    }
+</script>
