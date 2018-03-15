@@ -125,6 +125,7 @@ window.addEventListener("keypress", function key(event){
         running = true;
         start = true;
         tempdir = 2;
+
     }
     else if(key == 32)
         running = false;
@@ -179,7 +180,8 @@ function update() {
         score += foodpoints * (75 / interval);
         updateScore(score);
     }
-    set(snakeX, snakeY, "snake");
+    set(snakeX, snakeY, "snakeHead");
+    set(tailX[0], tailY[0], "snake");
 
     document.getElementById("score").innerHTML = "score: " + (score - (score % 1));
 }
@@ -188,7 +190,7 @@ function endGame() {
     updateScore(score);
 
 
-    snakeX = 2;
+    snakeX = 1;
     snakeY = 2;
     height = 30;
     width = 30;
@@ -208,6 +210,12 @@ function endGame() {
 
     document.getElementById("score").innerHTML = "press SPACE to restart";
     emptyMap();
+
+    for(var i = 0; i < length+1; i++){
+        updateTail();
+        snakeX++;
+        set(snakeX, snakeY, "snake");
+    }
 }
 
 function updateScore(s) {
@@ -287,9 +295,11 @@ function settings() {
     if(document.getElementById("version").getAttribute("class") == "hacked"){
         collapse = document.getElementById("collapse").checked;
         wall = document.getElementById("wall").checked;
-        interval = document.getElementById("speed").value;
-        clearInterval(int);
-        int = setInterval(gameLoop, interval);
+        if(interval != document.getElementById(("speed").value)) {
+            interval = document.getElementById("speed").value;
+            clearInterval(int);
+            int = setInterval(gameLoop, interval);
+        }
     }else
     {
         collapse = true;
