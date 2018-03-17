@@ -4,7 +4,7 @@ var snakeY = 2;
 var height = 30;
 var width = 30;
 var interval = 75;
-var increment = 1;
+var increment = 50;
 var foodpoints = 4;
 var start = false;
 var lastGames = [1];
@@ -34,7 +34,7 @@ function run() {
 }
 
 function init() {
-    if(document.getElementById("version").getAttribute("class") == "hacked"){
+    if(document.getElementById("version").getAttribute("class") === "hacked"){
         document.getElementById("speed").value = 75;
         document.getElementById("wall").checked = true;
         document.getElementById("collapse").checked = true;
@@ -56,7 +56,7 @@ function createMap() {
     for( var y = 0; y < height; y++) {
         document.write("<tr>");
         for( var x = 0; x < width; x++){
-            if(x == 0 || x == width -1 || y == 0 || y == height -1) {
+            if(x === 0 || x === width -1 || y === 0 || y === height -1) {
                 document.write("<td class='wall' id='" + x + "-" + y + "'></td>");
             }else {
                 document.write("<td class='blank' id='" + x + "-" + y + "'></td>");
@@ -93,7 +93,7 @@ function createFood() {
     while(!found && (length < (width - 2) * (height - 2) + 1)){
         var FoodX = rand(1, width-1);
         var FoodY = rand(1, height-1);
-        if(getType(FoodX, FoodY) == "blank"){
+        if(getType(FoodX, FoodY) === "blank"){
             found = true;
         }
     }
@@ -105,32 +105,31 @@ function createFood() {
 window.addEventListener("keypress", function key(event){
     //if key is W set direction up
     var key = event.keyCode;
-    if(key == 0)//make sure that key work
+    if(key === 0)//make sure that key work
         key = event.which;
 
-    if(direction != -1 && (key == 119 || key == 87) && running)
+    if(direction !== -1 && (key === 119 || key === 87) && running)
         tempdir = 0;
     //if key is S set direction down
-    else if(direction != 0 && (key == 115 || key == 83) && running)
+    else if(direction !== 0 && (key === 115 || key === 83) && running)
         tempdir = -1;
     //if key is A set direction left
-    else if(direction != 2 && (key == 97 || key == 65) && running)
+    else if(direction !== 2 && (key === 97 || key === 65) && running)
         tempdir = 1;
     //if key is D set direction right
-    else if(direction != 1 && (key == 100 || key == 68) && running)
+    else if(direction !== 1 && (key === 100 || key === 68) && running)
         tempdir = 2;
     if(!running && start)
         running = true;
-    if(!start && (key == 100 || keey == 68)) {
+    if(!start && (key === 100 || key === 68)) {
         running = true;
         start = true;
         tempdir = 2;
 
     }
-    else if(key == 32)
+    else if(key === 32)
         running = false;
 });
-
 
 function gameLoop() {
     if(running && !gameOver)
@@ -174,7 +173,7 @@ function update() {
         wallSwitch();
 
 
-    if(snakeX == foodX && snakeY == foodY){
+    if(snakeX === foodX && snakeY === foodY){
         grow(increment);
         createFood();
         score += foodpoints * (75 / interval);
@@ -183,6 +182,7 @@ function update() {
     set(snakeX, snakeY, "snakeHead");
     set(tailX[0], tailY[0], "snake");
 
+    score += 1;
     document.getElementById("score").innerHTML = "score: " + (score - (score % 1));
 }
 
@@ -230,7 +230,7 @@ function updateScore(s) {
 function emptyMap() {
     for( var y = 0; y < height; y++) {
         for( var x = 0; x < width; x++){
-            if(x == 0 || x == width -1 || y == 0 || y == height -1) {
+            if(x === 0 || x === width -1 || y === 0 || y === height -1) {
                 document.getElementById(x + "-" + y).setAttribute("class", "wall");
             }else {
                 document.getElementById(x + "-" + y).setAttribute("class", "blank");
@@ -257,45 +257,41 @@ function updateTail() {
 }
 
 function crashWall() {
-    if(snakeX == 0 || snakeX == width-1 || snakeY == 0 || snakeY == height-1)
-        return true;
-    else
-        return false;
+    return (snakeX === 0 || snakeX === width-1 || snakeY === 0 || snakeY === height-1)
 }
 
 function wallSwitch() {
-    if(snakeY == 0 && direction == 0)
+    if(snakeY === 0 && direction === 0)
         snakeY = height - 2;
-    if(snakeY == (height - 1) && direction == -1)
+    if(snakeY === (height - 1) && direction === -1)
         snakeY = 1;
-    if(snakeX == 0 && direction == 1)
+    if(snakeX === 0 && direction === 1)
         snakeX = width - 2;
-    if(snakeX == (width - 1) && direction == 2)
+    if(snakeX === (width - 1) && direction === 2)
         snakeX = 1;
 }
 
 function resetWall() {
     for( var y = 0; y < height; y++)
         for( var x = 0; x < width; x++)
-            if(x == 0 || x == width -1 || y == 0 || y == height -1)
+            if(x === 0 || x === width -1 || y === 0 || y === height -1)
                 set(x, y, "wall");
 }
 
 function crashSnake(){
     for(var i = tailX.length-1; i >=0; i--){
-        if(snakeX == tailX[i] && snakeY == tailY[i]){
+        if(snakeX === tailX[i] && snakeY === tailY[i]){
             return true;
-            break;
         }
     }
     return false;
 }
 
 function settings() {
-    if(document.getElementById("version").getAttribute("class") == "hacked"){
+    if(document.getElementById("version").getAttribute("class") === "hacked"){
         collapse = document.getElementById("collapse").checked;
         wall = document.getElementById("wall").checked;
-        if(interval != document.getElementById(("speed").value)) {
+        if(interval !== document.getElementById(("speed").value)) {
             interval = document.getElementById("speed").value;
             clearInterval(int);
             int = setInterval(gameLoop, interval);
