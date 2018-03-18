@@ -60,15 +60,7 @@ function run() {
         document.getElementById("disco").checked = false;
     }
     createMap();
-    updateData();
-    updateScore(1);
-    grow(2);
-    for(var i = 0; i < length-1; i++) {
-        updateTail();
-        snake[0].x++;
-    }
-    createFood();
-    interval = setInterval(gameLoop, intervalTime);
+    restart();
 }
 //creations
 {
@@ -199,6 +191,29 @@ function gameLoop() {
 
     function endGame() {
         running = false;
+        clearInterval(interval);
+        restart();
+    }
+
+    function restart() {
+        score = 0;
+        lastGame = [0];
+        lastGame[0] = 0;
+        running = false;
+
+        length = 1;
+        snake = [length];
+        snake[0] = {x: 2, y: 2, direction: 2};
+
+        updateData();
+        updateScore(1);
+        grow(2);
+        for(var i = 0; i < length-1; i++) {
+            updateTail();
+            snake[0].x++;
+        }
+        createFood();
+        interval = setInterval(gameLoop, intervalTime);
     }
 }
 //data
@@ -286,8 +301,6 @@ function gameLoop() {
         var minAlpha = 0;
     }
     function draw(fill) {
-
-
         if (fill) {
             //settings
             {
@@ -312,7 +325,7 @@ function gameLoop() {
                     ((i * 2) * minColor) + "," +
                     (255 - (i * 2) * minColor + maxColor) + "," +
                     ((i * 5) * minColor) + "," +
-                    ((i % 2) * minAlpha + maxAlpha) + ")");
+                    (((i+1) % 2) * minAlpha + maxAlpha) + ")");
             }
             //food
             Fill(food.x, food.y, "#ff0000");
