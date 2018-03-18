@@ -3,18 +3,71 @@
     margin: 0;
 }
 
-body {
+body#version.hacked {
     background-color: black;
     color: #00ff00;
     font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 25px 30px 1fr;
+}
+
+body#version.normal {
+     background-color: black;
+     color: #00ff00;
+     font-size: 20px;
+     display: grid;
+     grid-template-columns: 1fr;
+     grid-template-rows: 30px 25px 1px 1fr;
+}
+
+div#hacks input{
+    margin-right: 10px;
 }
 
 #score{
+    grid-row-start: 1;
+    grid-row-end: 2;
+
     color: #00ff00;
     font-size: 30px;
 }
 
 #best{
+    grid-row-start: 2;
+    grid-row-end: 3;
+
     color: #00a0ff;
+    font-size: 25px;
+}
+
+body#version.hacked div#hacks{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    visibility: visible;
+
+    color: #00ff00;
     font-size: 20px;
+}
+
+body#version.normal div#hacks{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    visibility: hidden;
+
+    color: #00ff00;
+    font-size: 20px;
+}
+
+.theGame{
+    border: 0;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+
+
+
+#pongCanvas{
+    border: 1px solid #00b000;
 }

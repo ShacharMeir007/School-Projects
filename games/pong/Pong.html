@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <title>Pong</title>
     <link rel="stylesheet" href="../games.css">
-    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 </head>
-<body style="margin: 0px">
-<ul>
-    <li><div class="title"></div></li>
-    <li><canvas id="pongCanvas" style="border: 1px solid #00b000"></canvas></li>
-</ul>
+<body class="hacked" id="version">
 
+<div id="score">Score: </div>
+<div id="best">Best: </div>
+
+<div id="hacks">
+    speed: <input type="number" id="speed" step="25">
+</div>
+
+<canvas class="theGame" id="pongCanvas"></canvas>
 <script src="Pong.js"></script>
 </body>
 </html>
-<script type="text/javascript">
-    $(function () {
-        $(".title").load("../scoringPage.html");
-    })
-</script>

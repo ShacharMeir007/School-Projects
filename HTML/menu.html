@@ -34,13 +34,13 @@
             <li><strong><a href="#">games&#9662</a></strong>
                 <ul>
                     <li><strong><a href="Snake%20Page.html">snake</a></strong></li>
-                    <li><strong><a href="Hacked%20Snake%20Page.html">hacked snake</a></strong></li>
+                    <li><strong><a href="Pong%20Page.html">pong</a></strong></li>
                 </ul>
             </li>
             <li><strong><a href="about.html">about</a></strong></li>
             <input type="checkbox" id="loginCheck" width="10px" height="10px" style="margin-top: 35px">
         </ul>
-        <div id="formediv"></div>
+        <div id="formDiv"></div>
     </nav>
 </div>
 </body>
@@ -50,12 +50,12 @@
 <script type="text/javascript">
     $(function () {
         setInterval(int, 100);
-    })
+    });
 
     function int() {
         if(document.getElementById("loginCheck").checked)
-            $("#formediv").load("logedWindow.html");
+            $("#formDiv").load("logedWindow.html");
         else
-            $("#formediv").load("unLogedWindow.html");
+            $("#formDiv").load("unLogedWindow.html");
     }
 </script>

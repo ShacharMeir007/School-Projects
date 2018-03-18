@@ -12,7 +12,6 @@ div{
     grid-template-rows:auto 1fr ;
 }
 
-
 #content_box{
     background-color: rgba(246, 250, 255, 0.91);
     margin: 80px 100px 50px 100px;
@@ -20,21 +19,19 @@ div{
     grid-template-columns: 5px 1fr 5px;
     grid-template-rows: 5px 1fr 5px;
     border-radius: 5px;
-
 }
 
-#thegame{
-    border: 0px;
-    width: 365px;
-    height: 425px;
-    margin: 0px 100px 50px 100px;
+body.gamePage div#content_box{
+    background-color: rgba(246, 250, 255, 0.91);
+    margin: 80px 100px 50px 100px;
+    display: grid;
+    grid-template-columns: 5px 1fr 5px;
+    grid-template-rows: 5px 1fr 5px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
-#theHgame{
-    border: 0px;
-    width: 365px;
-    height: 450px;
-    margin: 0px 100px 50px 100px;
-}
+
 
 #content{
     grid-column-start: 2;
@@ -44,4 +41,33 @@ div{
     font-size: 30px ;
     color: #ff0911;
 }
+
+.gameBox{
+    background-color: rgba(246, 250, 255, 0.91);
+    margin: 0 100px 50px 100px;
+    display: grid;
+    grid-template-columns: 5px 1fr 5px;
+    grid-template-rows: 5px 1fr 5px;
+}
+
+.gameFrame{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: 0;
+}
+
+#snakeGameFrame{
+    width: 720px;
+    height: 440px;
+    border: 10px solid black;
+}
+
+#pongGameFrame{
+     width: 505px;
+     height: 390px;
+    border: 10px solid black;
+ }
+
 

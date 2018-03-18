@@ -15,6 +15,9 @@ var goalPoint = 4;
 var lastGames = [0];
 var personalBest = 0;
 
+var Kup = 87;//w
+var Kdown = 83;//s
+
 var Lplate = {
     x:platePosision,
     y:10,
@@ -55,9 +58,9 @@ function updateData() {
 function updatePlayer() {
     //set direction by keys
     {
-        if(keys[38])
+        if(keys[Kup])
             Lplate.direction = -1;
-        else if(keys[40])
+        else if(keys[Kdown])
             Lplate.direction = 1;
         else
             Lplate.direction = 0;

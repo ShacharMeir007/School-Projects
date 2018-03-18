@@ -2,33 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hacked Snake</title>
+    <title>Pong</title>
 
     <link rel="stylesheet" type="text/css" href="../CSS/style.css">
     <link rel="stylesheet" type="text/css" href="../CSS/nav%20bar.css">
     <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 </head>
-<body>
+<body class="gamePage">
 <div>
     <div class="index">
     </div>
 
     <!the body ______________________________________________________________>
-    <div id="content_box" style="margin-bottom: 0px">
+    <div id="content_box" style="margin-bottom: 0">
         <div id="content">
-            <p>
             <h3>Snake:</h3>
+            <p>
+                This is a standard pong game. click on the black box, and press 'W' to start playing.
             </p>
             <p>
-                This is a standart snake game with some hacks. click on the black box, and press any D to start playing.
-                Please make sure you are on English Keyboard.
-            </p>
-            <p>
-                keys: W - up , S - down , A - left , D - right , SPACE - stop
+                keys: W - up , S - down , SPACE - stop
             </p>
         </div>
     </div>
-    <iframe src="../snake/HsnakePage.html" id="theHgame" scrolling="no"></iframe>
+    <div class="gameBox">
+        <iframe src="../games/pong/Pong.html" class="gameFrame" id="pongGameFrame" scrolling="no"></iframe>
+    </div>
     <!body end ______________________________________________________________>
 </div>
 </body>
