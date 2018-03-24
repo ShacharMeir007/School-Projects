@@ -5,6 +5,6 @@ if (isset($_POST['submit'])) {
     echo "success";
 }/**/
 else{
-    header("Location: ../PHP/Sign%20up.html");
+    header("Location: ../PHP/Sign%20up.php");
     exit();
 }

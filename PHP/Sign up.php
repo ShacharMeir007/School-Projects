@@ -18,7 +18,7 @@
     <div id="content_box">
         <div id="content">
 
-            <form id="sign_up_form" action="../PHP/ " method="post">
+            <form id="sign_up_form" action="../PHP/signup.inc.php" method="post">
                 <p id="message">Sign up</p>
                 <input id="first" type="text"   name="first" placeholder="Firstname">
                 <input id="last" type="text" name="last" placeholder="Lastname">
