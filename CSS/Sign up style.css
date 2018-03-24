@@ -1,6 +1,6 @@
 
 #content_box{
-
+    background-color: black;
     display: inline-block;
     grid-template-rows: 20px 20px 20px 20px 20px;
 }
