@@ -5,10 +5,15 @@
  * Date: 3/25/2018
  * Time: 12:08 AM
  */
+
 session_start();
+function getURL(){
+    $url = $_SERVER['REQUEST_URI'];
+    return $url;
+}
 if (isset($_POST['submit'])){
     include 'dbh.inc.php';
-
+    $_SESSION['url'] = $_SERVER['HTTP_REFERER'];
 
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
@@ -39,7 +44,8 @@ if (isset($_POST['submit'])){
                     $_SESSION['u_last'] = $row['user_last'];
                     $_SESSION['u_email'] = $row['user_email'];
                     $_SESSION['u_uid'] = $row['user_uid'];
-                    header("location: ../PHP/Sign%20up.html?login=success");
+                    header("location: ".$_SESSION['url']);
+                    unset($_SESSION['url']);
                     exit();
                 }
             }

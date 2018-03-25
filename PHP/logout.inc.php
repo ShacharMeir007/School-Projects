@@ -9,6 +9,8 @@ if (isset($_POST['submit'])) {
     session_start();
     session_unset();
     session_destroy();
-    header("Location: ../PHP/Sign%20up.php");
+    $_SESSION['url'] = $_SERVER['HTTP_REFERER'];
+    header("location: ".$_SESSION['url']);
+    session_destroy();
     exit();
 }
