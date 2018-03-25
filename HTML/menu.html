@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Menu</title>
 
-    <link rel="stylesheet" type="text/css" href="../nav%20bar.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/nav%20bar.css">
     <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(window).on('scroll', function() {
@@ -24,20 +24,20 @@
             <img src="../img/exodus.png" height="80" width="250">
         </a>
         <ul class="nav">
-            <li><strong><a href="Home%20Page.html">Home Page</a></strong></li>
+            <li><strong><a href="../HTML/Home%20Page.html">Home Page</a></strong></li>
             <li><strong><a href="#">Gallery&#9662</a></strong>
                 <ul>
-                    <li><strong><a href="code%20example.html">code examples</a></strong></li>
-                    <li><strong><a href="Decoration.html">decoration</a></strong></li>
+                    <li><strong><a href="../HTML/code%20example.html">code examples</a></strong></li>
+                    <li><strong><a href="../HTML/Decoration.html">decoration</a></strong></li>
                 </ul>
             </li>
             <li><strong><a href="#">games&#9662</a></strong>
                 <ul>
-                    <li><strong><a href="Snake%20Page.html">snake</a></strong></li>
-                    <li><strong><a href="Pong%20Page.html">pong</a></strong></li>
+                    <li><strong><a href="../HTML/Snake%20Page.html">snake</a></strong></li>
+                    <li><strong><a href="../HTML/Pong%20Page.html">pong</a></strong></li>
                 </ul>
             </li>
-            <li><strong><a href="about.html">about</a></strong></li>
+            <li><strong><a href="../HTML/about.html">about</a></strong></li>
             <input type="checkbox" id="loginCheck" width="10px" height="10px" style="margin-top: 35px">
         </ul>
         <div id="formDiv"></div>
@@ -45,8 +45,6 @@
 </div>
 </body>
 </html>
-
-
 <script type="text/javascript">
     $(function () {
         setInterval(int, 100);
@@ -54,8 +52,8 @@
 
     function int() {
         if(document.getElementById("loginCheck").checked)
-            $("#formDiv").load("logedWindow.html");
+            $("#formDiv").load("../HTML/logedWindow.html");
         else
-            $("#formDiv").load("unLogedWindow.html");
+            $("#formDiv").load("../HTML/unLogedWindow.php");
     }
 </script>

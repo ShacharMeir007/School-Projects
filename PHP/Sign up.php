@@ -17,14 +17,15 @@
     <!the body ______________________________________________________________>
     <div id="content_box">
         <div id="content">
-            <form id="sign_up_form" action="dbh.inc.php" method="POST">
+
+            <form id="sign_up_form" action="../PHP/signup.inc.php" method="post">
                 <p id="message">Sign up</p>
-                <input id="first" type="text" name="first" placeholder="Firstname">
+                <input id="first" type="text"   name="first" placeholder="Firstname">
                 <input id="last" type="text" name="last" placeholder="Lastname">
                 <input id="email" type="text" name="email" placeholder="E-mail">
                 <input id="uid" type="text" name="uid" placeholder="Username">
                 <input id="pwd" type="password" name="pwd" placeholder="Password">
-                <button id="submit" type="submit" name="submit">Sign up</button>
+                <button id="submit" type="submit"   name="submit">Sign up</button>
 
 
 
