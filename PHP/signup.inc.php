@@ -10,7 +10,7 @@ if (isset($_POST['submit'])){
     // error handlers
     //check for empty field
     if (empty($first)||empty($last)||empty($email)||empty($uid)||empty($pwd)){
-        header("Location: ../PHP/empty%20test.php");
+        header("Location: ../PHP/Sign%20up.php");
         exit();
     }else {
         //check if input characters are valid
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])){
                 $resultCheck = mysqli_num_rows($result);
 
                 if ($resultCheck > 0) {
-                    header("Location: ../PHP/username%20test.php");
+                    header("Location:../PHP/Sign%20up.php");
                     exit();
                 }else{
                     $sql = "SELECT * FROM users where user_email ='$email';";
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])){
                     $resultCheck = mysqli_num_rows($result);
 
                     if ($resultCheck > 0) {
-                        header("Location: ../PHP/username%20test.php");
+                        header("Location: ../PHP/Sign%20up.php");
                         exit();
                     }
 
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])){
                     user_email,user_uid,user_pwd) VALUES ('$first','$last',
                     '$email','$uid','$hashedPwd');";
                     mysqli_query($conn, $sql);
-                    header("Location: link%20test.php");
+                    header("Location: ../HTML/Home%20page.html");
                     exit();
                 }
             }
