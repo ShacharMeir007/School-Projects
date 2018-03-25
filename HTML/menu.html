@@ -38,7 +38,6 @@
                 </ul>
             </li>
             <li><strong><a href="../HTML/about.html">about</a></strong></li>
-            <input type="checkbox" id="loginCheck" width="10px" height="10px" style="margin-top: 35px">
         </ul>
         <div id="formDiv"></div>
     </nav>
@@ -46,14 +45,7 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(function () {
-        setInterval(int, 100);
-    });
-
-    function int() {
-        if(document.getElementById("loginCheck").checked)
-            $("#formDiv").load("../HTML/logedWindow.html");
-        else
-            $("#formDiv").load("../HTML/unLogedWindow.php");
-    }
+    $(function (){
+        $("#formDiv").load("../HTML/unLogedWindow.html");
+    })
 </script>
