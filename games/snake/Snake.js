@@ -1,4 +1,5 @@
 //canvas settings
+
 {
     var canvas = document.getElementById("snakeCanvas");
     canvas.width = 1;
@@ -189,7 +190,7 @@ function gameLoop() {
 
     }
 
-    function endGame() {
+    function  endGame() {
         running = false;
         clearInterval(interval);
         restart();
@@ -358,4 +359,3 @@ function gameLoop() {
     }
 }
 run();
-
