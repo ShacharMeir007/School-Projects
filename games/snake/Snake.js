@@ -89,7 +89,7 @@ function run() {
         }
     }
 }
-//main game loop
+//Main game loop
 function gameLoop() {
     draw(false);
     if(running) {
