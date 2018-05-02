@@ -30,7 +30,7 @@ var Rplate = {
     y:0,
     w:plate_size.width,
     h:plate_size.height,
-    speed: 5,
+    speed: 4,
     direction: 0};
 var ball = {x:canvas.width - (platePosision + plate_size.width), y:plate_size.width/2, w:5, h:5, Xdirection:-1, Ydirection:1, speed:5, YspeedBoost:0.7};
 

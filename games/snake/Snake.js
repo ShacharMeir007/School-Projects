@@ -154,7 +154,7 @@ function gameLoop() {
 
     function checkFood() {
         if(snake[0].x === food.x && snake[0].y === food.y) {
-            grow(1);
+            grow(10);
             updateScore(4);
             createFood();
         }
@@ -321,8 +321,9 @@ function gameLoop() {
                 }
             }
             //snake tail
-            for (var i = 1; i < snake.length; i++) {
-                Fill(snake[i].x, snake[i].y, "rgba(" +
+            for (var l = snake.length-1; l >0 ; l--) {
+                var i = l;
+                Fill(snake[l].x, snake[l].y, "rgba(" +
                     ((i * 2) * minColor) + "," +
                     (255 - (i * 2) * minColor + maxColor) + "," +
                     ((i * 5) * minColor) + "," +
