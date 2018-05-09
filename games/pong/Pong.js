@@ -131,7 +131,6 @@ function updateBall() {
             updateScore(-goalPoint);
             if(score < 0) {
                 lastGames[lastGames.length] = 0;
-                updateScore(0);
             }
         }
         if ((ball.x + ball.w) > canvas.width) {
@@ -179,11 +178,12 @@ function draw(fill) {
 
 }
 function updateScore(s) {
-    s = s - (s % 1);
-    lastGames[lastGames.length] = s;
-    score = lastGames[lastGames.length];
-    if (s > personalBest) {
-        personalBest = s;
+    lastGames[lastGames.length] = score;
+    score += s;
+    if(score < 0)
+        score = 0;
+    if (score > personalBest) {
+        personalBest = score;
         document.getElementById("best").innerHTML = "Best score: " + personalBest;
     }
 }

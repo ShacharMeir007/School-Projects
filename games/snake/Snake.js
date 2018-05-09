@@ -29,6 +29,7 @@
 {
     //score
     var score = 0;
+    var scoreFactor = 4.0;
     var lastGame = [0];
     lastGame[0] = 0;
     var personalBest = 0;
@@ -38,6 +39,7 @@
     var wallCrash = false;
     var collapse = false;
     var intervalTime = 75;
+    var increacment = 1;
     //graphics
     var rainbow = false;
     var disco = false;
@@ -102,6 +104,7 @@ function gameLoop() {
         checkFood();
     //______________________
     }
+    updateData();
     updateSettings();
     draw(true);
 }
@@ -154,10 +157,22 @@ function gameLoop() {
 
     function checkFood() {
         if(snake[0].x === food.x && snake[0].y === food.y) {
-            grow(10);
-            updateScore(4);
+            grow(increacment);
+            updateScore(getPoints());
             createFood();
         }
+    }
+
+    function getPoints() {
+        var settingFactor = 0;
+        if(collapse){
+            settingFactor += 0.7;
+        }
+        if (wallCrash){
+            settingFactor += 0.3;
+        }
+        return scoreFactor * (75.0/intervalTime) * settingFactor;
+
     }
 
     function checkCollapse() {
@@ -207,7 +222,7 @@ function gameLoop() {
         snake[0] = {x: 2, y: 2, direction: 2};
 
         updateData();
-        updateScore(1);
+        score = 0;
         grow(2);
         for(var i = 0; i < length-1; i++) {
             updateTail();
@@ -220,12 +235,12 @@ function gameLoop() {
 //data
 {
     function updateData() {
-        document.getElementById("score").innerHTML = "Score: " + score;
-        document.getElementById("best").innerHTML = "Best score: " + personalBest;
+        document.getElementById("score").innerHTML = "Score: " + (score - score%1);
+        document.getElementById("best").innerHTML = "Best score: " + (personalBest - personalBest%1);
     }
 
     function updateScore(s) {
-        score += (s % 1);
+        score += s;
         lastGame[lastGame.length] = score;
         if (score > personalBest)
             personalBest = score;

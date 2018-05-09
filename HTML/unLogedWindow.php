@@ -29,7 +29,7 @@ function getURL():String{
 
     <button class="log" onclick="get" id="login_button" name="submit" type="submit">login</button>
 
-    <a href="../PHP/Sign%20up.php"><button class="log" id="register_button">Register</button></a>
+    <a href="../PHP/Sign%20up.php"><button class="log" id="register_button" type="button">Register</button></a>
        
 
 </form>';

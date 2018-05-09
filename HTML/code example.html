@@ -19,6 +19,23 @@
             <p>
                 This is part our code:
             </p>
+            <p>Snake:</p>
+                <pre>
+    function gameLoop() {
+        draw(false);
+        if(running) {
+        //while running
+            updateTail();
+            updateSnake();
+            checkCollapse();
+           checkWall();
+           checkFood();
+        }
+        updateData();
+        updateSettings();
+        draw(true);
+    }
+                </pre>
         </div>
     </div>
     <!body end ______________________________________________________________>
